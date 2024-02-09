@@ -1,0 +1,134 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 6rem;
+}
+
+.a {
+    color: unset;
+    text-decoration: none;
+}
+
+.header-links {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-links_logo {
+    margin-right: 2rem;
+}
+
+.header-links_logo h1 {
+    color: #fff;
+}
+
+.header-links_container { 
+    display: flex;
+    flex-direction: row;
+}
+
+.header-sign {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-links_container p,
+.header-sign p,
+.header-menu_container p {
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.header-sign button,
+.header-menu_container button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: #FF4820;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.header-menu {
+    margin-left: 1rem;
+    display: none;
+    position: relative;
+}
+
+.header-menu svg {
+    cursor: pointer;
+}
+
+.header-sign button:hover {
+    background: #c52400;
+}
+
+.header-menu_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: end;
+    background: var(--color-footer);
+    padding: 2rem;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    margin-top: 1rem;
+    min-width: 210px;
+    border-radius: 5px;
+    box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.header-menu_container-links-sign {
+    display: none;
+}
+
+@media screen and (max-width: 1050px) {
+    .header-links_container {
+        display: none;
+    }
+
+    .header-menu {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .header {
+        padding: 2rem 4rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header {
+        padding: 2rem;
+    }
+
+    .header-sign {
+        display: none;
+    }
+
+    .header-menu_container {
+        top: 20px;
+    }
+
+    .header-menu_container-links-sign {
+        display: block;
+    }
+}
