@@ -6,25 +6,19 @@ import Home from "./components/home/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import ForgetPassword from "./pages/ForgetPassword.jsx";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { checkPersistedLogin } from "./services/auth";
 import { getCurrentUser } from "aws-amplify/auth";
 
-function Menu() {
-  return (
-    <nav>
-      <Link to="/">Home</Link> | <Link to="/login">Login</Link> |{" "}
-      <Link to="/mypage">MyPage</Link>
-    </nav>
-  );
-}
-
 function App() {
   const [loged, setLoged] = useState(false);
-  const [register, setRegister] = useState(false);
-  const [resetPassword, setResetPassword] = useState(false);
+  // const [register, setRegister] = useState(false);
+  // const [resetPassword, setResetPassword] = useState(false);
 
-  useEffect(() => checkPersistedLogin(setLoged), []);
+  useEffect(() => {
+    checkPersistedLogin(setLoged);
+    currentAuthenticatedUser();
+  }, []);
 
   async function currentAuthenticatedUser() {
     try {
@@ -38,45 +32,27 @@ function App() {
     }
   }
 
-  currentAuthenticatedUser();
-
   return (
     <Router>
       <div className={!loged && "App"}>
-        {loged && (
-          <div className="header-section">
-            <Header logged={loged} setLogged={setLoged} />
-          </div>
-        )}
-        {loged && (
+        {loged ? (
+          <>
+            <div className="header-section">
+              <Header logged={loged} setLogged={setLoged} />
+            </div>
+            <div>
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </div>
+          </>
+        ) : (
           <div>
-            <Home />
-          </div>
-        )}
-
-        {!loged && (
-          <div>
-            {!resetPassword ? (
-              <>
-            {!register ? (
-              <SignIn setLogged={setLoged} Link={Link} register={setRegister} ResetPassword={setResetPassword} />
-            ) : (
-              <SignUp Link={Link} register={setRegister} setLogged={setLoged} />
-            )}
-            {/* <Login logged={setLoged} /> */}</>)
-            : (
-                <ForgetPassword goBack={setResetPassword} />
-            )
-            }
-            <Menu />
-
-            {
-              //eroriaq sakaifo
-              /* <Routes>
-              <Route path="/signin" Component={<SignIn />} />
-              <Route path="/signup" Component={<SignUp />} />
-            </Routes> */
-            }
+            <Routes>
+              <Route path="/" element={<SignIn setLogged={setLoged} />} />
+              <Route path="/signup" element={<SignUp setLogged={setLoged} />} />
+              <Route path="/forgetpassword" element={<ForgetPassword />} />
+            </Routes>
           </div>
         )}
       </div>
@@ -85,3 +61,4 @@ function App() {
 }
 
 export default App;
+

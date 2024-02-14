@@ -4,8 +4,9 @@ import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Login } from "../services/auth";
+import { Link } from "react-router-dom";
 
-const SignIn = ({ setLogged, Link, register, ResetPassword }) => {
+const SignIn = ({ setLogged }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visibility, setVisibility] = useState(false);
@@ -66,15 +67,9 @@ const SignIn = ({ setLogged, Link, register, ResetPassword }) => {
                 <input type="checkbox" /> Remember me
               </label>
 
-              <a
-                href="forgot-password"
-                onClick={(event) => {
-                  event.preventDefault();
-                  ResetPassword(true);
-                }}
-              >
+              <Link to="forgetpassword" >
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
           <button className="btn" type="submit">
@@ -83,7 +78,7 @@ const SignIn = ({ setLogged, Link, register, ResetPassword }) => {
           <div className="register-link">
             <p>
               Don't have an account? <bc />
-              <a href="d" onClick={() => register(true)}><Link to="/signup">Sign up</Link></a>
+              <a href="d"><Link to="/signup">Sign up</Link></a>
             </p>
           </div>
         </form>

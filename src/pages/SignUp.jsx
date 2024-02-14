@@ -4,8 +4,9 @@ import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Register, handleSignUpConfirmation } from "../services/auth";
+import { Link } from "react-router-dom";
 
-const SignUp = ({ register, Link, setLogged }) => {
+const SignUp = ({ setLogged }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visibility, setVisibility] = useState(false);
@@ -19,7 +20,7 @@ const SignUp = ({ register, Link, setLogged }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Register(email, password, setLogged, setConfirmSignUpCode);
+      await Register(email, password, setConfirmSignUpCode);
       // Handle successful sign-up or other actions if needed
     } catch (error) {
       // Handle sign-up error
@@ -78,7 +79,7 @@ const SignUp = ({ register, Link, setLogged }) => {
               <div className="register-link">
                 <p>
                   have an account? <bc />
-                  <Link to="/signin" onClick={() => register(false)}>
+                  <Link to="/" >
                     Sign in
                   </Link>
                 </p>
@@ -91,7 +92,7 @@ const SignUp = ({ register, Link, setLogged }) => {
                 <input
                   type="text"
                   placeholder="Confirmation Code"
-                  value={confirmationCode}
+                  value={confirmationCode} 
                   onChange={(event) => {
                     setConfirmationCode(event.target.value);
                   }}

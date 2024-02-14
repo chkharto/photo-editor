@@ -8,8 +8,9 @@ import {
   handleConfirmResetPassword,
   handleResetPassword,
 } from "../services/auth";
+import { Link } from "react-router-dom";
 
-const ForgetPassword = ({ goBack }) => {
+const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, setState] = useState(true);
@@ -29,7 +30,7 @@ const ForgetPassword = ({ goBack }) => {
   };
 
   const confirmPassword = (event) => {
-    handleConfirmResetPassword(email, resetPasswordCode, password, goBack);
+    handleConfirmResetPassword(email, resetPasswordCode, password);
   };
 
   return (
@@ -103,9 +104,9 @@ const ForgetPassword = ({ goBack }) => {
               </button>
             </>
           )}
-          <p className="goback" onClick={() => goBack(false)}>
+          <Link to="/" className="goback" >
             Go Back
-          </p>
+          </Link>
         </form>
       </div>
     </div>

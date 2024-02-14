@@ -26,7 +26,6 @@ export async function Login(username, password, setLogged) {
 export async function Register(
   username,
   password,
-  setLogged,
   setConfirmSignUpCode
 ) {
   try {
@@ -107,12 +106,10 @@ function handleResetPasswordNextSteps(output) {
 export async function handleConfirmResetPassword(
   username,
   confirmationCode,
-  newPassword,
-  goBack
+  newPassword
 ) {
   try {
     await confirmResetPassword({ username, confirmationCode, newPassword });
-    goBack(false);
   } catch (error) {
     console.log(error);
   }
