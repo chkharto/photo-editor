@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { signOut } from "aws-amplify/auth";
+import { Link } from "react-router-dom";
 
 import "./header.css";
 
 const Menu = () => (
   <>
     <p>
-      <a className="a" href="/">
+      <Link className="a" to="/">
         Home
-      </a>
+      </Link>
     </p>
     <p>
-      <a className="a" href="/">
+      <Link className="a" to="/about">
         About
-      </a>
+      </Link>
     </p>
     <p>
-      <a className="a" href="/">
+      <Link className="a" to="/contact">
         Contact
-      </a>
+      </Link>
     </p>
   </>
 );

@@ -67,7 +67,7 @@ const SignIn = ({ setLogged }) => {
                 <input type="checkbox" /> Remember me
               </label>
 
-              <Link to="forgetpassword" >
+              <Link to="/forgetpassword" >
                 Forgot Password?
               </Link>
             </div>
@@ -78,7 +78,7 @@ const SignIn = ({ setLogged }) => {
           <div className="register-link">
             <p>
               Don't have an account? <bc />
-              <a href="d"><Link to="/signup">Sign up</Link></a>
+              <Link to="/signup">Sign up</Link>
             </p>
           </div>
         </form>

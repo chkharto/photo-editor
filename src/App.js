@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import Login from "./components/authentication/Login.jsx";
+import "./components/authentication/authStyles.css";
 import Header from "./components/header/Header.jsx";
 import Home from "./components/home/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
@@ -9,6 +9,9 @@ import ForgetPassword from "./pages/ForgetPassword.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { checkPersistedLogin } from "./services/auth";
 import { getCurrentUser } from "aws-amplify/auth";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Error from "./pages/Error.jsx";
 
 function App() {
   const [loged, setLoged] = useState(false);
@@ -43,6 +46,9 @@ function App() {
             <div>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<Error />} />  
               </Routes>
             </div>
           </>
@@ -50,8 +56,9 @@ function App() {
           <div>
             <Routes>
               <Route path="/" element={<SignIn setLogged={setLoged} />} />
-              <Route path="/signup" element={<SignUp setLogged={setLoged} />} />
-              <Route path="/forgetpassword" element={<ForgetPassword />} />
+              <Route path="signup" element={<SignUp setLogged={setLoged} />} />
+              <Route path="forgetpassword" element={<ForgetPassword />} />
+              <Route path="*" element={<Error />} />  
             </Routes>
           </div>
         )}
